@@ -12,7 +12,7 @@ class Appointment {
   id: string;
 
   @Column()
-  provider: string;
+  provider_id: string;
 
   @Column('time without time zone')
   date: Date;
