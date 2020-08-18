@@ -14,6 +14,9 @@ usersRouter.post('/', async (request, response) => {
       password,
     });
 
+    /**Removendo a senha do objeto retornardo no json */
+    delete user.password;
+
     return response.json(user);
   } catch (err) {
     return response.status(400).json({ error: err.message });
