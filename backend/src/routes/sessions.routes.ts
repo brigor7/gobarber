@@ -1,10 +1,14 @@
-import { Router, Response } from 'express';
-
+import { Router, Request, Response } from 'express';
+import AuthenticateUserService from '../services/AuthenticateUserService';
 const sessionsRouter = Router();
 
-sessionsRouter.get('/', async (_, response: Response) => {
+sessionsRouter.post('/', async (request: Request, response: Response) => {
   try {
-    return response.json({ message: 'routes sessions ok!' });
+    const { email, password } = request.body;
+    const authenticateUser = new AuthenticateUserService();
+    const { user, token } = await authenticateUser.execute({ email, password });
+
+    return response.json({ user, token });
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }

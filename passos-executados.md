@@ -7,3 +7,5 @@
 3. Criar tabela no banco execute: `yarn typeorm migration: run`
 
 4. Para voltar a ultima inplementação realizada execute: `yarn typeorm migration: revert`
+
+5) Way of Creation: Migration -> Model -> Route -> Service.
